@@ -1,0 +1,5 @@
+language: ruby
+build:
+  cache: true
+  ci:
+    - echo "hello world"
