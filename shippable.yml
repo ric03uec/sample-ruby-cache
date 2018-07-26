@@ -3,7 +3,7 @@ build:
   cache: true
   pre_ci_boot:
     image_name: ric03uec/u16ruball
-    image_tag: v6.2.4
+    image_tag: v6.2.4.patch-1
   ci:
     - echo "hello world"
     - env
