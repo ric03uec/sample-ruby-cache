@@ -7,4 +7,5 @@ build:
   ci:
     - echo "hello world"
     - env
+    - source $BASH_ENV
     - rvm list
