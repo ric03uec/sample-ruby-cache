@@ -1,9 +1,9 @@
 language: ruby
 build:
   cache: true
-  #pre_ci_boot:
-  #  image_name: ric03uec/u16ruball
-  #  image_tag: v6.2.4
+  pre_ci_boot:
+    image_name: ric03uec/u16ruball
+    image_tag: v6.2.4
   ci:
     - echo "hello world"
     - env
