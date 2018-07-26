@@ -6,3 +6,4 @@ build:
     image_tag: v6.2.4
   ci:
     - echo "hello world"
+    - env
