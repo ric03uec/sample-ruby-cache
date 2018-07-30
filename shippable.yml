@@ -7,7 +7,7 @@ build:
   ci:
     - . /etc/profile.d/rvm.sh
     - rvm version
-    - rvm get master
+    - rvm get master --auto-dotfiles
     - rvm version
     - echo "hello world"
     - env
