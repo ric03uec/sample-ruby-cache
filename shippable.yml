@@ -6,6 +6,8 @@ build:
     image_tag: v6.2.4.patch-1
   ci:
     - . /etc/profile.d/rvm.sh
+    - rvm get master
+    - rvm version
     - echo "hello world"
     - env
     - source $BASH_ENV
