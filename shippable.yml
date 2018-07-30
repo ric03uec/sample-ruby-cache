@@ -1,14 +1,15 @@
 language: ruby
 build:
   cache: true
-  pre_ci_boot:
-    image_name: ric03uec/u16ruball
-    image_tag: v6.2.4.patch-1
+#  pre_ci_boot:
+#    image_name: ric03uec/u16ruball
+#    image_tag: v6.2.4.patch-1
   ci:
-    - . /etc/profile.d/rvm.sh
+#   - . /etc/profile.d/rvm.sh
+    - trap
     - rvm version
-    - rvm get master --auto-dotfiles
-    - rvm version
+#    - rvm get master --auto-dotfiles
+#    - rvm version
     - echo "hello world"
     - env
     - source $BASH_ENV
