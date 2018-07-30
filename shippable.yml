@@ -10,6 +10,7 @@ build:
     image_tag: v6.2.4.patch-2
   ci:
 #   - . /etc/profile.d/rvm.sh
+    - cd /root
     - trap
     - rvm version
 #    - rvm get master --auto-dotfiles
