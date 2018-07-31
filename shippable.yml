@@ -16,3 +16,7 @@ build:
     - rvm version
     - echo "hello world"
     - env
+    - mkdir -p shippable/testresults
+    - mkdir -p shippable/codecoverage
+#    - echo "testResults" > shippable/testresults/testreport.xml
+    - echo "coverageResults" > shippable/testresults/coveragereport.xml
