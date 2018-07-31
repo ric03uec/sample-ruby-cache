@@ -19,4 +19,4 @@ build:
     - mkdir -p shippable/testresults
     - mkdir -p shippable/codecoverage
 #    - echo "testResults" > shippable/testresults/testreport.xml
-    - cp -vr coverage_report.xml > shippable/codecoverage/
+    - cp -vr coverage_report.xml shippable/codecoverage/
