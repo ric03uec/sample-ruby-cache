@@ -9,10 +9,10 @@ build:
     image_name: ric03uec/u16ruball
     image_tag: v6.2.4.patch-2
   ci:
-#   - . /etc/profile.d/rvm.sh
+    - . /etc/profile.d/rvm.sh
     - cd /root
     - trap
-#    - rvm version
+    - rvm version
 #    - rvm get master --auto-dotfiles
 #    - rvm version
     - echo "hello world"
