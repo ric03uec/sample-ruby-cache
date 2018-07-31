@@ -13,10 +13,6 @@ build:
     - cd /root
     - cd . && trap
     - trap
-#    - rvm version
-#    - rvm get master --auto-dotfiles
-#    - rvm version
+    - rvm version
     - echo "hello world"
     - env
-#    - source $BASH_ENV
-#    - rvm list
