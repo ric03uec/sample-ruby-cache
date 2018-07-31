@@ -12,10 +12,10 @@ build:
 #   - . /etc/profile.d/rvm.sh
     - cd /root
     - trap
-    - rvm version
+#    - rvm version
 #    - rvm get master --auto-dotfiles
 #    - rvm version
     - echo "hello world"
     - env
-    - source $BASH_ENV
-    - rvm list
+#    - source $BASH_ENV
+#    - rvm list
