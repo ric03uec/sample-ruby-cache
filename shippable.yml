@@ -1,7 +1,11 @@
 language: ruby
 
 rvm:
-  - 2.3.5
+  - 2.3.7
+  - 2.4.4
+  - 2.5.1
+  - "jruby-1.7.27"
+  - "jruby-9.2.0.0"
 
 build:
   cache: true
@@ -13,7 +17,7 @@ build:
     - cd /root
     - cd . && trap
     - trap
-    - rvm version
+#    - rvm version
     - echo "hello world"
     - env
     - mkdir -p $SHIPPABLE_BUILD_DIR/shippable/testresults
