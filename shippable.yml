@@ -8,9 +8,9 @@ rvm:
 #  - "jruby-9.2.0.0"
 
 build:
-  cache: true
-  cache_dir_list:  
-    - $SHIPPABLE_BUILD_DIR/shippable.yml
+  #cache: true
+  #cache_dir_list:  
+  #  - $SHIPPABLE_BUILD_DIR/shippable.yml
 #  pre_ci_boot:
 #    image_name: ric03uec/u16ruball
 #    image_tag: v6.2.4.patch-2
