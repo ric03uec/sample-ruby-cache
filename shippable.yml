@@ -30,7 +30,20 @@ build:
     - cp -vr $SHIPPABLE_BUILD_DIR/coverage_report.xml $SHIPPABLE_BUILD_DIR/shippable/codecoverage/
     - cp -vr $SHIPPABLE_BUILD_DIR/test_report.xml $SHIPPABLE_BUILD_DIR/shippable/testresults/
     
- 
+ post_ci:
+    - >
+      if [ $BRANCH = "master" ] && [ $IS_PULL_REQUEST == "false" ]; then
+        ENV=staging;
+        IMAGE_NAME=$IMAGE_NAME_STAGING;
+      fi;
+      if [ $BRANCH = "production" ] && [ $IS_PULL_REQUEST == "false" ]; then
+        ENV=staging;
+        IMAGE_NAME=$IMAGE_NAME_PRODUCTION;
+      fi;
+      if [ $ENV ]; then
+        echo $ENV;
+      fi;
+      
 integrations:
   hub:
     - integrationName: reg_dh_ric03uec
