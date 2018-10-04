@@ -49,5 +49,5 @@ build:
       
 integrations:
   hub:
-    - integrationName: reg_dh_ric03uec
+    - integrationName: ric03uec-dockerhub 
       type: dockerRegistryLogin
