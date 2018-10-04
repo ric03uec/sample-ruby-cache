@@ -28,3 +28,5 @@ build:
 #    - echo "testResults" > shippable/testresults/testreport.xml 
     - pwd
     - cp -vr $SHIPPABLE_BUILD_DIR/coverage_report.xml $SHIPPABLE_BUILD_DIR/shippable/codecoverage/
+    - cp -vr $SHIPPABLE_BUILD_DIR/test_report.xml $SHIPPABLE_BUILD_DIR/shippable/testresults/
+    
