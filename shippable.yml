@@ -1,7 +1,10 @@
 language: ruby
 
 rvm:
-  - 2.3.7
+  - 2.5.1
+  
+services:
+  - postgres
 
 #  - 2.4.4
 #  - 2.5.1
@@ -30,7 +33,7 @@ build:
     - cp -vr $SHIPPABLE_BUILD_DIR/coverage_report.xml $SHIPPABLE_BUILD_DIR/shippable/codecoverage/
     - cp -vr $SHIPPABLE_BUILD_DIR/test_report.xml $SHIPPABLE_BUILD_DIR/shippable/testresults/
     
- post_ci:
+  post_ci:
     - >
       if [ $BRANCH = "master" ] && [ $IS_PULL_REQUEST == "false" ]; then
         ENV=staging;
