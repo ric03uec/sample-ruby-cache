@@ -60,7 +60,7 @@ build:
         #docker push $GCR_REPO/$IMAGE_NAME:$BUILD_NUMBER;
       fi;
       
-#integrations:
-#  hub:
-#    - integrationName: gcr-admin 
-#      type: gcloudkey
+integrations:
+  hub:
+    - integrationName: gcr-admin 
+      type: gcloudkey
