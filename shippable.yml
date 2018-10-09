@@ -10,7 +10,11 @@ services:
 #  - 2.5.1
 #  - "jruby-1.7.27"
 #  - "jruby-9.2.0.0"
-
+env:
+  global:
+    - IMAGE_NAME_STAGING=l-photo-booth-staging
+    - IMAGE_NAME_PRODUCTION=l-photo-booth-production
+    - GCR_REPO=ric03uec
 build:
   #cache: true
   #cache_dir_list:  
@@ -48,6 +52,7 @@ build:
       fi;
       if [ $ENV ]; then
         echo $ENV;
+        docker build -t $GCR_REPO/$IMAGE_NAME:$BUILD_NUMBER .;
       fi;
       
 integrations:
