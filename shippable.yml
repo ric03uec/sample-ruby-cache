@@ -29,7 +29,7 @@ build:
     - trap
 #    - rvm version
     - echo "hello world"
-    - env
+    #- env
     - mkdir -p $SHIPPABLE_BUILD_DIR/shippable/testresults
     - mkdir -p $SHIPPABLE_BUILD_DIR/shippable/codecoverage
 #    - echo "testResults" > shippable/testresults/testreport.xml 
@@ -57,10 +57,10 @@ build:
         echo $IMAGE_NAME
         echo $BUILD_NUMBER
         docker build -t $GCR_REPO/$IMAGE_NAME:$BUILD_NUMBER .;
-        docker push $GCR_REPO/$IMAGE_NAME:$BUILD_NUMBER;
+        #docker push $GCR_REPO/$IMAGE_NAME:$BUILD_NUMBER;
       fi;
       
 integrations:
   hub:
-    - integrationName: ric03uec-dockerhub 
-      type: dockerRegistryLogin
+    - integrationName: gcr-admin 
+      type: gcloudkey
