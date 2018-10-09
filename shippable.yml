@@ -39,6 +39,7 @@ build:
     - cp -vr $SHIPPABLE_BUILD_DIR/test_report.xml $SHIPPABLE_BUILD_DIR/shippable/testresults/
     - echo "test file content" >> testfile.txt
     - mv testfile.txt $SHIPPABLE_BUILD_DIR/
+    - cd $SHIPPABLE_BUILD_DIR
     
   post_ci:
     - >
