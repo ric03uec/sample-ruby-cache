@@ -53,7 +53,11 @@ build:
       fi;
       if [ $ENV ]; then
         echo $ENV;
+        echo $GCR_REPO
+        echo $IMAGE_NAME
+        echo $BUILD_NUMBER
         docker build -t $GCR_REPO/$IMAGE_NAME:$BUILD_NUMBER .;
+        docker push $GCR_REPO/$IMAGE_NAME:$BUILD_NUMBER;
       fi;
       
 integrations:
