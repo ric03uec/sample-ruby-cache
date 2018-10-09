@@ -62,7 +62,7 @@ build:
       
 integrations:
   hub:
-#    - integrationName: gcr-admin 
-#      type: gcloudkey
     - integrationName:reg_dh_ric03uec 
       type: dockerRegistryLogin
+#    - integrationName: gcr-admin 
+#      type: gcloudkey
