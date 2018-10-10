@@ -3,8 +3,8 @@ language: ruby
 rvm:
   - 2.5.1
   
-services:
-  - postgres
+#services:
+#  - postgres
 
 #  - 2.4.4
 #  - 2.5.1
@@ -62,8 +62,8 @@ build:
       
 integrations:
   hub:
-    - integrationName: reg_dh_ric03uec 
-      type: dockerRegistryLogin
+#    - integrationName: reg_dh_ric03uec 
+#      type: dockerRegistryLogin
       
-#    - integrationName: gcr-admin 
-#      type: gcloudkey
+    - integrationName: gcr-admin 
+      type: gcloudkey
