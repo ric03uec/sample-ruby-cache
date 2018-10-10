@@ -3,8 +3,8 @@ language: ruby
 rvm:
   - 2.5.1
   
-#services:
-#  - postgres
+services:
+  - postgres
 
 #  - 2.4.4
 #  - 2.5.1
