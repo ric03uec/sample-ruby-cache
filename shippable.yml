@@ -1,69 +1,81 @@
 language: ruby
 
 rvm:
-  - 2.5.1
+  - 2.5
+#  - 2.6
   
-services:
-  - postgres
+#services:
+#  - postgres
 
-#  - 2.4.4
-#  - 2.5.1
-#  - "jruby-1.7.27"
-#  - "jruby-9.2.0.0"
 env:
-  global:
-    - IMAGE_NAME_STAGING=l-photo-booth-staging
-    - IMAGE_NAME_PRODUCTION=l-photo-booth-production
-    - GCR_REPO=ric03uec
+ - PGVERSION=10.0-1-linux-64
+
+runtime:
+ - nodePool: dynamic_u14_xlarge
+ - nodePool: shippable_shared_aarch32
+ - nodePool: dynamic_u16_xlarge
+
+matrix:
+ exclude:
+   - rvm: 2.5
+     nodePool: shippable_shared_aarch32
+     env: PGVERSION=10.0-1-linux-64
+ include:
+   - rvm: 2.5
+     nodePool: shippable_shared_aarch32
+     env: PGVERSION=10.0-1-linux    
+    
 build:
-  #cache: true
-  #cache_dir_list:  
-  #  - $SHIPPABLE_BUILD_DIR/shippable.yml
+#  cache: true
+#  cache_dir_list:  
+#  - $SHIPPABLE_BUILD_DIR/shippable.yml
 #  pre_ci_boot:
 #    image_name: ric03uec/u16ruball
 #    image_tag: v6.2.4.patch-2
   ci:
+    - env
+    - |
+     echo "PGVERSION: ${PGVERSION}"
+    - echo "DONE"
 #    - . /etc/profile.d/rvm.sh
-    - cd /root
-    - cd . && trap
-    - trap
+#    - cd . && trap
+#    - trap
 #    - rvm version
-    - echo "hello world"
+#    - echo "hello world"
     #- env
-    - mkdir -p $SHIPPABLE_BUILD_DIR/shippable/testresults
-    - mkdir -p $SHIPPABLE_BUILD_DIR/shippable/codecoverage
-#    - echo "testResults" > shippable/testresults/testreport.xml 
-    - pwd
-    - rvm use $SHIPPABLE_RUBY
-    - cp -vr $SHIPPABLE_BUILD_DIR/coverage_report.xml $SHIPPABLE_BUILD_DIR/shippable/codecoverage/
-    - cp -vr $SHIPPABLE_BUILD_DIR/test_report.xml $SHIPPABLE_BUILD_DIR/shippable/testresults/
-    - echo "test file content" >> testfile.txt
-    - mv testfile.txt $SHIPPABLE_BUILD_DIR/
-    - cd $SHIPPABLE_BUILD_DIR
+#    - mkdir -p $SHIPPABLE_BUILD_DIR/shippable/testresults
+#   - mkdir -p $SHIPPABLE_BUILD_DIR/shippable/codecoverage
+#  - pwd
+#    - rvm use $SHIPPABLE_RUBY
+#    - cp -vr $SHIPPABLE_BUILD_DIR/coverage_report.xml $SHIPPABLE_BUILD_DIR/shippable/codecoverage/
+#    - cp -vr $SHIPPABLE_BUILD_DIR/test_report.xml $SHIPPABLE_BUILD_DIR/shippable/testresults/
+#    - echo "test file content" >> testfile.txt
+#    - mv testfile.txt $SHIPPABLE_BUILD_DIR/
+#    - cd $SHIPPABLE_BUILD_DIR
     
-  post_ci:
-    - >
-      if [ $BRANCH = "master" ] && [ $IS_PULL_REQUEST == "false" ]; then
-        ENV=staging;
-        IMAGE_NAME=$IMAGE_NAME_STAGING;
-      fi;
-      if [ $BRANCH = "production" ] && [ $IS_PULL_REQUEST == "false" ]; then
-        ENV=staging;
-        IMAGE_NAME=$IMAGE_NAME_PRODUCTION;
-      fi;
-      if [ $ENV ]; then
-        echo $ENV;
-        echo $GCR_REPO
-        echo $IMAGE_NAME
-        echo $BUILD_NUMBER
-        docker build -t $GCR_REPO/$IMAGE_NAME:$BUILD_NUMBER .;
-        #docker push $GCR_REPO/$IMAGE_NAME:$BUILD_NUMBER;
-      fi;
+#  post_ci:
+#    - >
+#      if [ $BRANCH = "master" ] && [ $IS_PULL_REQUEST == "false" ]; then
+#        ENV=staging;
+#        IMAGE_NAME=$IMAGE_NAME_STAGING;
+#      fi;
+#      if [ $BRANCH = "production" ] && [ $IS_PULL_REQUEST == "false" ]; then
+#        ENV=staging;
+#        IMAGE_NAME=$IMAGE_NAME_PRODUCTION;
+#      fi;
+#      if [ $ENV ]; then
+#        echo $ENV;
+#        echo $GCR_REPO
+#        echo $IMAGE_NAME
+#        echo $BUILD_NUMBER
+#        docker build -t $GCR_REPO/$IMAGE_NAME:$BUILD_NUMBER .;
+#        #docker push $GCR_REPO/$IMAGE_NAME:$BUILD_NUMBER;
+#      fi;
       
-integrations:
-  hub:
+#integrations:
+#  hub:
 #    - integrationName: reg_dh_ric03uec 
 #      type: dockerRegistryLogin
       
-    - integrationName: gcr-admin 
-      type: gcloudkey
+#    - integrationName: gcr-admin 
+#      type: gcloudkey
