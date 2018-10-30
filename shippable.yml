@@ -1,22 +1,23 @@
 language: ruby
 
-#rvm:
-#  - 2.5
+rvm:
+  - 2.5
 #  - 2.6
   
-#services:
-#  - postgres   
-matrix:
-  include:
-    - rvm: 2.4 
-      nodePool: dynamic_u16_xlarge
-      env: PGVERSION=10.0-1-linux-64
-    - rvm: 2.4 
-      nodePool: shippable_shared_aarch32
-      env: PGVERSION=10.0-1-linux
-    - rvm: 2.5 
-      nodePool: shippable_shared_aarch64
-      env: PGVERSION=10.0-1-linux-64
+services:
+  - cassandra
+  
+#matrix:
+#  include:
+#    - rvm: 2.4 
+#      nodePool: dynamic_u16_xlarge
+#      env: PGVERSION=10.0-1-linux-64
+#    - rvm: 2.4 
+#      nodePool: shippable_shared_aarch32
+#      env: PGVERSION=10.0-1-linux
+#    - rvm: 2.5 
+#      nodePool: shippable_shared_aarch64
+#      env: PGVERSION=10.0-1-linux-64
       
 build:
 #  cache: true
@@ -26,15 +27,11 @@ build:
 #    image_name: ric03uec/u16ruball
 #    image_tag: v6.2.4.patch-2
   ci:
-    - env
-    - |
-     echo "PGVERSION: ${PGVERSION}"
-    - echo "DONE"
 #    - . /etc/profile.d/rvm.sh
 #    - cd . && trap
 #    - trap
-#    - rvm version
-#    - echo "hello world"
+    - rvm version
+    - echo "hello world"
     #- env
 #    - mkdir -p $SHIPPABLE_BUILD_DIR/shippable/testresults
 #   - mkdir -p $SHIPPABLE_BUILD_DIR/shippable/codecoverage
